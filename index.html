@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una sorpresa</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#09070f;color:white;overflow:hidden;
+ font-family:Arial,sans-serif
+}
+main{
+ min-height:100vh;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;position:relative;
+ background:radial-gradient(ellipse,#392044 0%,#15101f 42%,#09070f 75%)
+}
+h2{font-size:14px;letter-spacing:4px;color:#f3b7ff;font-weight:500}
+.stage{width:min(88vw,370px);height:350px;position:relative}
+svg{width:100%;height:100%;overflow:visible}
+.body{transform-origin:center;animation:float 3s ease-in-out infinite}
+.lid{transform-origin:50% 85%;transition:transform .8s cubic-bezier(.2,.8,.2,1.2)}
+.open .lid{transform:translate(-20px,-190px) rotate(-20deg)}
+.open .body{animation:pop .5s ease-out}
+button{
+ padding:15px 30px;border:2px solid #ffc4ef;border-radius:40px;
+ background:linear-gradient(110deg,#f13ba9,#8b4be7);
+ color:white;font-size:16px;font-weight:bold;letter-spacing:1px;
+ box-shadow:0 0 25px #e64dbb55;cursor:pointer
+}
+button:active{transform:scale(.95)}
+p{color:#c9b9d7;font-size:12px}
+#confetti,#balloons{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+#confetti{z-index:5}#balloons{z-index:4}
+.bit{position:absolute;top:-20px;width:8px;height:12px;background:var(--c);
+ animation:fall var(--t) linear var(--d) forwards}
+.balloon{
+ position:absolute;bottom:-130px;width:43px;height:53px;
+ background:var(--c);border:2px solid #ffffffa0;
+ border-radius:50% 50% 45% 45%;
+ box-shadow:inset -7px -5px #0002,inset 5px 4px #fff4;
+ animation:rise var(--t) ease-in var(--d) forwards
+}
+.balloon:after{content:"";position:absolute;top:51px;left:20px;height:60px;
+ border-left:1px solid #ffffff8a}
+@keyframes float{50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes pop{40%{transform:translateY(12px) scale(1.06,.92)}}
+@keyframes fall{to{transform:translate(var(--x),110vh) rotate(850deg)}}
+@keyframes rise{to{transform:translate(25px,-125vh) rotate(12deg)}}
+@media(max-height:600px){.stage{height:280px}h2{margin:5px}}
+</style>
+</head>
+<body>
+<main id="scene">
+ <h2>UNA SORPRESA ESPECIAL</h2>
+ <div class="stage">
+  <svg viewBox="0 0 340 340" aria-label="Caja de regalo ilustrada">
+   <defs>
+    <linearGradient id="pink" x2="1" y2="1">
+     <stop stop-color="#ff8bd5"/><stop offset="1" stop-color="#c52b91"/>
+    </linearGradient>
+    <linearGradient id="purple" x2="1" y2="1">
+     <stop stop-color="#bd78ff"/><stop offset="1" stop-color="#642bb5"/>
+    </linearGradient>
+    <linearGradient id="gold" x2="1">
+     <stop stop-color="#fff0a0"/><stop offset="1" stop-color="#ffad45"/>
+    </linearGradient>
+   </defs>
+   <!-- Brillitos dibujados alrededor -->
+   <g fill="none" stroke-linecap="round" stroke-width="3">
+    <path d="M50 100l5-14 5 14 12 5-12 4-5 13-5-13-12-4z" stroke="#ffe27a"/>
+    <path d="M280 105l4-12 4 12 11 4-11 4-4 12-4-12-11-4z" stroke="#65e4ff"/>
+    <path d="M58 235l4-9 4 9 9 3-9 4-4 9-4-9-9-4z" stroke="#ff8bd3"/>
+    <path d="M275 240l5-12m-10 6h12" stroke="#a879ff"/>
+   </g>
+   <ellipse cx="170" cy="285" rx="105" ry="16" fill="#c54bcf" opacity=".2"/>
+   <g class="body">
+    <!-- Cuerpo de la caja -->
+    <path d="M78 145L126 121 274 139 239 161 237 270 93 270Z"
+      fill="url(#purple)" stroke="#ffe5ff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M93 145L239 161 237 270 93 270Z"
+      fill="url(#pink)" stroke="#ffe5ff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M153 152L190 156 189 270 153 270Z"
+      fill="url(#gold)" stroke="#fff0c0" stroke-width="3"/>
+    <path d="M111 185q-5 20 0 38" fill="none" stroke="#ffc3e8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M205 208l4-9 4 9 9 3-9 4-4 9-4-9-9-4z" fill="#ffe9a0"/>
+    <path d="M119 242l3-7 4 7 7 3-7 3-4 7-3-7-7-3z" fill="#ffb8e4"/>
+   </g>
+   <g class="lid">
+    <!-- Tapa -->
+    <path d="M67 128L119 105 278 124 226 151Z"
+      fill="#f77acb" stroke="#fff0ff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M67 128L226 151 226 170 67 145Z"
+      fill="#b83caa" stroke="#fff0ff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M226 151L278 124 278 143 226 170Z"
+      fill="#873bc0" stroke="#fff0ff" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Lazo -->
+    <path d="M170 126Q116 102 125 80Q138 61 170 120Z"
+      fill="url(#gold)" stroke="#fff0c0" stroke-width="4"/>
+    <path d="M171 125Q190 66 221 81Q243 103 171 125Z"
+      fill="#ffcf59" stroke="#fff0c0" stroke-width="4"/>
+    <path d="M168 124Q132 140 145 163L174 135Z"
+      fill="#ffb847" stroke="#fff0c0" stroke-width="4"/>
+    <path d="M177 128Q211 136 205 158L174 136Z"
+      fill="#ffb847" stroke="#fff0c0" stroke-width="4"/>
+    <path d="M163 121Q173 115 181 125L179 137 166 137Z"
+      fill="#ff83bd" stroke="#fff0ff" stroke-width="3"/>
+    <!-- Trazos de luz a mano -->
+    <path d="M83 130l21 7m150-12 12 3" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+   </g>
+  </svg>
+ </div>
+ <button id="open">ABRIR REGALO</button>
+ <p id="hint">Toca el botón para empezar</p>
+</main>
+<div id="confetti"></div><div id="balloons"></div>
+<script>
+const scene=document.querySelector("#scene");
+const button=document.querySelector("#open");
+const confetti=document.querySelector("#confetti");
+const balloons=document.querySelector("#balloons");
+const colors=["#ff5fbd","#ffe27a","#65e4ff","#a879ff","#ff9068","#a7ffcf","#fff4fc"];
+let opened=false;
+
+button.addEventListener("click",()=>{
+ if(opened) scene.classList.remove("open");
+ void scene.offsetWidth;
+ scene.classList.add("open");
+ opened=true;
+ button.textContent="¡OTRA VEZ!";
+ document.querySelector("#hint").textContent="¡Que empiece la celebración!";
+ confetti.innerHTML="";
+ balloons.innerHTML="";
+ for(let i=0;i<115;i++){
+  const b=document.createElement("i");
+  b.className="bit";
+  b.style.left=Math.random()*100+"vw";
+  b.style.setProperty("--c",colors[Math.floor(Math.random()*colors.length)]);
+  b.style.setProperty("--t",2.5+Math.random()*3+"s");
+  b.style.setProperty("--d",Math.random()*.6+"s");
+  b.style.setProperty("--x",(Math.random()-.5)*220+"px");
+  confetti.appendChild(b);
+ }
+ for(let i=0;i<16;i++){
+  const b=document.createElement("i");
+  b.className="balloon";
+  b.style.left=Math.random()*100+"vw";
+  b.style.setProperty("--c",colors[Math.floor(Math.random()*colors.length)]);
+  b.style.setProperty("--t",6+Math.random()*4+"s");
+  b.style.setProperty("--d",Math.random()*1.5+"s");
+  balloons.appendChild(b);
+ }
+ setTimeout(()=>confetti.innerHTML="",6500);
+ setTimeout(()=>balloons.innerHTML="",12000);
+});
+</script>
+</body>
+</html>
